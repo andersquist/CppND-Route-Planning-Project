@@ -21,7 +21,8 @@ class RouteModel : public Model {
         
         Node(){}
         Node(int idx, RouteModel * search_model, Model::Node node) : Model::Node(node), parent_model(search_model), index(idx) {}
-      
+
+        float distance(const Node& otherNode ) const { return sqrt( pow(this->x - otherNode.x, 2) + pow(this->y - otherNode.y,2)); }
       private:
         // Add private Node variables and methods here.
         int index;
