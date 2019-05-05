@@ -6,3 +6,7 @@ test.cpp
 build/
 bin/
 lib/
+
+.DS_Store
+.idea
+cmake-build-debug
