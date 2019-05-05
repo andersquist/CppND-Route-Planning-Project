@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include "model.h"
 #include <iostream>
+#include <vector>
 
 class RouteModel : public Model {
 
@@ -25,8 +26,10 @@ class RouteModel : public Model {
     // Add public RouteModel variables and methods here.
     RouteModel(const std::vector<std::byte> &xml);  
     std::vector<Node> path; // This variable will eventually store the path that is found by the A* search.
+    std::vector<Node>& SNodes() { return m_Nodes; }
 
   private:
     // Add private RouteModel variables and methods here.
+    std::vector<Node> m_Nodes;
 
 };
