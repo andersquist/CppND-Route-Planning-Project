@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 
+set(TESTING "FindNeighbors")
+
 if(NOT TESTING)
     set(TESTING "notest")
 endif()

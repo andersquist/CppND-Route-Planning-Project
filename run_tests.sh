@@ -15,5 +15,6 @@ function test:run() {
 #test:run "RMNodeClass"
 #test:run "RMSNodes"
 #test:run "NodeDist"
-test:run "NodeToRoad"
+#test:run "NodeToRoad"
+test:run "FindNeighbors"
 
