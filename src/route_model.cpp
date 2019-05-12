@@ -2,15 +2,10 @@
 #include <iostream>
 
 RouteModel::RouteModel(const std::vector<std::byte> &xml) : Model(xml) {
-    for (int i = 0; i < this->Nodes().size(); i++ ) {
-        auto current = this->Nodes()[i];
-
-        // Create node on stack
-        RouteModel::Node routeNode (i, this, current);
-
-        // Copy it to the vector
-        m_Nodes.push_back(routeNode);
-
+    int counter = 0;
+    for (Model::Node node : this->Nodes())
+    {
+        m_Nodes.push_back(Node(counter++, this, node));
     }
 
     CreateNodeToRoadHashmap();
@@ -57,4 +52,28 @@ void RouteModel::Node::FindNeighbors() {
             neighbors.push_back(neighbor);
         }
     }
+}
+
+RouteModel::Node &RouteModel::FindClosestNode(float x, float y) {
+    RouteModel::Node node;
+    node.x = x;
+    node.y = y;
+    float min_dist = std::numeric_limits<float>::max();
+    int closest_index = -1;
+
+    for (const Road &road : Roads())
+    {
+        if (road.type != Road::Type::Footway)
+        {
+            for (const int node_idx : Ways()[road.way].nodes )
+            {
+                if (node.distance(SNodes()[node_idx]) < min_dist) {
+                    closest_index = node_idx;
+                    min_dist = node.distance(SNodes()[node_idx]);
+                }
+            }
+        }
+    }
+
+    return SNodes()[closest_index];
 }
