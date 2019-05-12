@@ -14,6 +14,7 @@ class RoutePlanner {
 
   private:
     // Add private variables or methods declarations here.
+    std::vector<RouteModel::Node> ConstructFinalPath(RouteModel::Node *current_node);
     RouteModel &m_Model;
     RouteModel::Node *start_node;
     RouteModel::Node *end_node;
