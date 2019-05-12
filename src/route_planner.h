@@ -11,6 +11,7 @@ class RoutePlanner {
     RoutePlanner(RouteModel &model, float start_x, float start_y, float end_x, float end_y);
     // Add public variables or methods declarations here.
     float Distance() const { return distance; };
+    void AStarSearch();
 
   private:
     // Add private variables or methods declarations here.
