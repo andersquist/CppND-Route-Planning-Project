@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 
-set(TESTING "FindClosest")
-
 if(NOT TESTING)
-    set(TESTING "notest")
+    set(TESTING "AStarSearch")
 endif()
 
 message("TESTING = ${TESTING}")
